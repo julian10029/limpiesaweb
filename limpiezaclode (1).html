@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JESMILUZ – Servicios Profesionales de Aseo y Limpieza</title>
+
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --white:        #F9F8F6;
+      --pearl:        #FFFFFF;
+      --gray-50:      #F4F3F1;
+      --gray-100:     #E8E6E2;
+      --gray-200:     #D1CEC9;
+      --gray-400:     #9E9B95;
+      --gray-600:     #6B6862;
+      --gray-800:     #3A3834;
+      --gray-900:     #1E1D1A;
+      --accent:       #688db9;
+      --accent-light: #72c8f1;
+      --accent-pale:  #c9e9fc;
+      --shadow-sm:    0 2px 12px rgba(0,0,0,.06);
+      --shadow-md:    0 8px 32px rgba(0,0,0,.10);
+      --shadow-lg:    0 20px 60px rgba(0,0,0,.14);
+      --radius:       16px;
+      --radius-sm:    8px;
+      --nav-h:        72px;
+      --transition:   .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      width: min(1180px, 92%);
+      margin-inline: auto;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 520px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .85rem 2rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(44,110,73,.35);
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(44,110,73,.45);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,.5);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      background: rgba(249,248,246,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    #navbar.scrolled {
+      border-color: var(--gray-100);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+    .nav-logo-icon {
+      width: 80px; height: 80px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    }
+    .nav-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: .5rem;
+    }
+    .brand-top {
+      font-size: .7rem;
+      color: var(--gray-900);
+      letter-spacing: .12em;
+    }
+    .brand-bottom {
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: .05em;
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+    .nav-links a {
+      padding: .55rem 1rem;
+      border-radius: 50px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-pale); }
+    .nav-links a.active { color: var(--accent); background: var(--accent-pale); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #fff !important;
+    }
+    .nav-cta:hover { background: var(--accent-light) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: transparent;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--gray-800);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--pearl);
+      border-bottom: 1px solid var(--gray-100);
+      box-shadow: var(--shadow-md);
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: .5rem;
+      z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: .85rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      color: var(--gray-700);
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--accent-pale); color: var(--accent); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .carousel {
+      position: absolute;
+      inset: 0;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(20,18,16,.72) 0%,
+        rgba(44,110,73,.25) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: var(--nav-h);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(8px);
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      color: rgba(255,255,255,.9);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      max-width: 680px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em { font-style: normal; color: #a8d5b8; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.78);
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: rgba(255,255,255,.6);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: bounce 2.2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: var(--transition);
+    }
+    .carousel-btn:hover { background: rgba(255,255,255,.32); transform: translateY(-50%) scale(1.08); }
+    .carousel-btn.prev { left: 1.5rem; }
+    .carousel-btn.next { right: 1.5rem; }
+    .carousel-dots {
+      position: absolute;
+      bottom: 5rem;
+      right: 2rem;
+      z-index: 20;
+      display: flex;
+      gap: .45rem;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.4);
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .dot.active { background: #fff; width: 24px; border-radius: 4px; }
+
+    /* ============================================================
+       PROMO BAR
+    ============================================================ */
+    .promo-bar {
+      background: var(--accent);
+      color: #fff;
+      padding: 2rem 0;
+    }
+    .promo-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .promo-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .promo-content p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    section { padding: 6rem 0; }
+
+    /* ============================================================
+       SERVICIOS
+    ============================================================ */
+    #servicios { background: var(--pearl); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--pearl);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--gray-200); }
+    .service-card:hover .card-img img { transform: scale(1.06); }
+    .card-img { height: 210px; overflow: hidden; position: relative; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .card-tag {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3rem .75rem;
+      border-radius: 50px;
+    }
+    .card-body { padding: 1.5rem; }
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+    }
+    .card-body p { font-size: .875rem; color: var(--gray-600); line-height: 1.65; }
+    .card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap var(--transition);
+    }
+    .service-card:hover .card-arrow { gap: .6rem; }
+
+    /* ============================================================
+       COTIZACIÓN
+    ============================================================ */
+    #cotizacion { background: var(--gray-50); }
+    .quote-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .quote-info h2 { margin-bottom: 1.25rem; }
+    .quote-info p { color: var(--gray-600); margin-bottom: 2rem; }
+    .quote-perks { display: flex; flex-direction: column; gap: 1rem; }
+    .perk { display: flex; align-items: center; gap: .85rem; font-size: .9rem; color: var(--gray-700); }
+    .perk-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      background: var(--accent-pale);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+    .quote-form {
+      background: var(--pearl);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1.75rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .45rem; margin-bottom: 1.1rem; }
+    .form-group label {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      color: var(--gray-800);
+      background: var(--white);
+      transition: border-color .25s, box-shadow .25s;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(44,110,73,.12);
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6862' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .85rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    /* ============================================================
+       INFORMACIÓN
+    ============================================================ */
+    #informacion { background: var(--pearl); }
+    .info-header { text-align: center; margin-bottom: 3.5rem; }
+    .info-header .section-sub { margin-inline: auto; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .info-card {
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-100);
+      background: var(--gray-50);
+      transition: var(--transition);
+    }
+    .info-card:hover {
+      background: var(--pearl);
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .info-icon {
+      width: 52px; height: 52px;
+      background: var(--accent-pale);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .info-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+    }
+    .info-card p { font-size: .875rem; color: var(--gray-600); line-height: 1.7; }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    #confianza { background: var(--gray-900); color: #fff; }
+    .trust-header { text-align: center; margin-bottom: 3rem; }
+    .trust-header .section-label { color: #a8d5b8; }
+    .trust-header .section-title { color: #fff; }
+    .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .trust-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: var(--transition);
+    }
+    .trust-card:hover { background: rgba(255,255,255,.1); border-color: rgba(168,213,184,.35); }
+    .stars { color: #FFD166; font-size: .9rem; letter-spacing: .1em; margin-bottom: 1rem; }
+    .trust-card blockquote { font-size: .9rem; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 1.5rem; }
+    .reviewer { display: flex; align-items: center; gap: .75rem; }
+    .reviewer-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: .95rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 600; font-size: .875rem; color: #fff; }
+    .reviewer-role { font-size: .75rem; color: rgba(255,255,255,.5); }
+
+    /* ============================================================
+       CONTACTOS
+    ============================================================ */
+    #contactos { background: var(--gray-50); }
+    .contact-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray-600); margin-bottom: 2.5rem; }
+    .contact-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; font-size: .9rem; color: var(--gray-700); }
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      background: var(--pearl);
+      border: 1px solid var(--gray-100);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-item strong { display: block; font-size: .8rem; color: var(--gray-400); font-weight: 500; margin-bottom: .1rem; }
+    .contact-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 380px;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--gray-400);
+      border: 1px solid var(--gray-200);
+    }
+    .contact-map i { font-size: 3rem; color: var(--accent); }
+    .contact-map p { font-size: .875rem; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer { background: var(--gray-900); color: rgba(255,255,255,.6); padding: 3.5rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand .nav-logo { color: #fff; margin-bottom: 1rem; }
+    .footer-brand p { font-size: .875rem; line-height: 1.75; }
+    .footer-col h4 {
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col li + li { margin-top: .6rem; }
+    .footer-col a { font-size: .875rem; transition: color .25s; }
+    .footer-col a:hover { color: #a8d5b8; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: .8rem;
+    }
+
+    /* ============================================================
+       FLOATING WHATSAPP
+    ============================================================ */
+    .fab-whatsapp {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      z-index: 900;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.7rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+      transition: var(--transition);
+    }
+    .fab-whatsapp:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37,211,102,.6); }
+    .fab-whatsapp::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,.4);
+      animation: pulse-ring 2.5s cubic-bezier(.4,0,.6,1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(.9); opacity: 1; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .quote-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-inner { justify-content: center; }
+      .nav-logo { gap: .5rem; }
+      .brand-text { align-items: flex-start; }
+      .brand-top, .brand-bottom { text-align: left; }
+      .brand-top { font-size: .65rem; }
+      .brand-bottom { font-size: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .carousel-btn.prev { left: .75rem; }
+      .carousel-btn.next { right: .75rem; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 4rem 0; }
+      .services-grid, .info-grid, .trust-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .quote-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="navbar" role="navigation" aria-label="Navegación principal">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-icon"><img src="imagenes/logo.png" alt="Logo JESMILUZ" /></span>
+      <span class="brand-text">
+        <span class="brand-top">SERVICIOS INTEGRALES</span>
+        <span class="brand-bottom">JESMILUZ</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#cotizacion">Cotización</a></li>
+      <li><a href="#informacion">Información</a></li>
+      <li><a href="#contactos">Contactos</a></li>
+      <li><a href="#cotizacion" class="nav-cta">Cotizar ahora</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#cotizacion" class="mobile-link">Cotización</a>
+  <a href="#informacion" class="mobile-link">Información</a>
+  <a href="#contactos" class="mobile-link">Contactos</a>
+  <a href="#cotizacion" class="btn btn-primary mobile-link" style="text-align:center;justify-content:center;margin-top:.5rem">Cotizar ahora</a>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="inicio" aria-label="Portada" style="padding:0">
+  <div id="hero">
+    <div class="carousel" id="carousel">
+      <div class="carousel-slide active">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80&auto=format" alt="Limpieza profesional" />
+        <div class="carousel-overlay"></div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1600&q=80&auto=format" alt="Aseo de oficinas" />
+        <div class="carousel-overlay"></div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1600&q=80&auto=format" alt="Limpieza de apartamentos" />
+        <div class="carousel-overlay"></div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80&auto=format" alt="Equipos de limpieza" />
+        <div class="carousel-overlay"></div>
+      </div>
+    </div>
+
+    <button class="carousel-btn prev" id="prevBtn" aria-label="Imagen anterior"><i class="ph ph-caret-left"></i></button>
+    <button class="carousel-btn next" id="nextBtn" aria-label="Imagen siguiente"><i class="ph ph-caret-right"></i></button>
+    <div class="carousel-dots" id="carouselDots" role="tablist"></div>
+
+    <div class="container hero-content">
+      <span class="hero-eyebrow"><i class="ph ph-seal-check"></i> Servicio certificado y de confianza</span>
+      <h1 class="hero-title">Servicios Profesionales<br />de <em>Aseo y Limpieza</em></h1>
+      <p class="hero-sub">Transformamos cada espacio en un ambiente impecable. Calidad, puntualidad y atención al detalle en cada servicio.</p>
+      <div class="hero-actions">
+        <a href="#cotizacion" class="btn btn-primary"><i class="ph ph-chat-circle-dots"></i> Solicitar Cotización</a>
+        <a href="#servicios" class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.4)">Ver Servicios</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true"><span>Explorar</span><i class="ph ph-arrow-down"></i></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROMOTIONAL MESSAGE
+============================================================ -->
+<div class="promo-bar reveal">
+  <div class="container">
+    <div class="promo-content">
+      <h2>Somos una Empresa Nueva Con la Mision de Brindarte la Mejor Experiencia
+      </h2>
+      <p>Ofrecemos servicios de limpieza profesionales con dedicación, pasión y el objetivo de que Nuestros Clientes san Nuestra Principal Prioridad .      
+         ¡Descubre la Mejor Experiencia con JESMILUZ!</p>
+      <a href="#cotizacion" class="btn btn-primary">Solicita tu Cotización</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVICIOS
+============================================================ -->
+<section id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <span class="section-label">Lo que hacemos</span>
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-sub">Soluciones integrales de limpieza adaptadas a cada necesidad.</p>
+      </div>
+      <a href="#cotizacion" class="btn btn-outline reveal">Solicitar servicio</a>
+    </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format" alt="Aseo de Oficinas" loading="lazy" />
+          <span class="card-tag">Corporativo</span>
+        </div>
+        <div class="card-body">
+          <h3>Aseo de Oficinas</h3>
+          <p>Mantenemos tu espacio de trabajo impecable: escritorios, baños, cocinas y áreas comunes con productos eco-amigables.</p>
+          <span class="card-arrow">Cotizar <i class="ph ph-arrow-right"></i></span>
+        </div>
+      </article>
+      <article class="service-card reveal" style="transition-delay:.1s">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format" alt="Aseo de Apartamentos" loading="lazy" />
+          <span class="card-tag">Residencial</span>
+        </div>
+        <div class="card-body">
+          <h3>Aseo de Apartamentos</h3>
+          <p>Limpieza profunda o mantenimiento regular para tu hogar. Habitaciones, cocina, baños y zonas comunes a la perfección.</p>
+          <span class="card-arrow">Cotizar <i class="ph ph-arrow-right"></i></span>
+        </div>
+      </article>
+      <article class="service-card reveal" style="transition-delay:.2s">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1565183997392-2f6f122e5912?w=600&q=80&auto=format" alt="Aseo Empresarial" loading="lazy" />
+          <span class="card-tag">Empresarial</span>
+        </div>
+        <div class="card-body">
+          <h3>Aseo Empresarial</h3>
+          <p>Limpieza de bodegas, plantas industriales y grandes instalaciones con personal especializado y equipos de alta capacidad.</p>
+          <span class="card-arrow">Cotizar <i class="ph ph-arrow-right"></i></span>
+        </div>
+      </article>
+      <article class="service-card reveal" style="transition-delay:.3s">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80&auto=format" alt="Aseo para Eventos" loading="lazy" />
+          <span class="card-tag">Eventos</span>
+        </div>
+        <div class="card-body">
+          <h3>Aseo para Eventos</h3>
+          <p>Preparación, atención durante el evento y limpieza post-evento. Dejamos el lugar listo antes y perfecto después de cada celebración.</p>
+          <span class="card-arrow">Cotizar <i class="ph ph-arrow-right"></i></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COTIZACIÓN
+============================================================ -->
+<section id="cotizacion">
+  <div class="container">
+    <div class="quote-wrap">
+      <div class="reveal">
+        <span class="section-label">Rápido y sin costo</span>
+        <h2 class="section-title">Solicita tu Cotización</h2>
+        <p>Completa el formulario y te contactaremos por WhatsApp con una propuesta personalizada sin ningún compromiso.</p>
+        <div class="quote-perks">
+          <div class="perk"><span class="perk-icon"><i class="ph ph-clock"></i></span> Respuesta en menos de 2 horas</div>
+          <div class="perk"><span class="perk-icon"><i class="ph ph-tag"></i></span> Sin costo ni compromiso</div>
+          <div class="perk"><span class="perk-icon"><i class="ph ph-shield-check"></i></span> Personal verificado y asegurado</div>
+          <div class="perk"><span class="perk-icon"><i class="ph ph-star"></i></span> Más de 1.200 clientes satisfechos</div>
+        </div>
+      </div>
+      <div class="quote-form reveal" style="transition-delay:.15s">
+        <p class="form-title">Cuéntanos sobre tu servicio</p>
+        <form id="quoteForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: María García" required />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / Celular</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ej: 3001234567" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="servicio">Tipo de servicio</label>
+              <select id="servicio" name="servicio" required>
+                <option value="">Seleccionar...</option>
+                <option>Aseo de Oficinas</option>
+                <option>Aseo de Apartamentos</option>
+                <option>Aseo Empresarial</option>
+                <option>Aseo para Eventos</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fecha">Fecha del servicio</label>
+              <input type="date" id="fecha" name="fecha" required />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="descripcion">Descripción adicional</label>
+            <textarea id="descripcion" name="descripcion" placeholder="Cuéntanos el tamaño del espacio, frecuencia deseada, detalles especiales..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-whatsapp" style="width:100%;justify-content:center;font-size:1rem;padding:1rem">
+            <i class="ph ph-whatsapp-logo"></i> Cotizar por WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INFORMACIÓN
+============================================================ -->
+<section id="informacion">
+  <div class="container">
+    <div class="info-header reveal">
+      <span class="section-label">¿Por qué elegirnos?</span>
+      <h2 class="section-title">Empresa de Confianza</h2>
+      <p class="section-sub">Nos respaldamos en valores sólidos y un compromiso real con la excelencia en cada servicio.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="info-icon"><i class="ph ph-target"></i></div>
+        <h3>Nuestra Misión</h3>
+        <p>Proporcionar servicios de aseo de la más alta calidad, superando las expectativas de cada cliente con dedicación y profesionalismo en cada visita.</p>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.1s">
+        <div class="info-icon"><i class="ph ph-medal"></i></div>
+        <h3>Experiencia</h3>
+        <p>Con más de 8 años en el sector, hemos perfeccionado cada proceso. Conocemos las mejores técnicas y productos para todo tipo de superficie.</p>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.2s">
+        <div class="info-icon"><i class="ph ph-seal-check"></i></div>
+        <h3>Calidad Garantizada</h3>
+        <p>Utilizamos productos eco-amigables certificados y equipos modernos. Cada servicio incluye revisión de calidad antes de finalizar.</p>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.3s">
+        <div class="info-icon"><i class="ph ph-users-three"></i></div>
+        <h3>Profesionalismo</h3>
+        <p>Todo nuestro personal pasa verificación de antecedentes, recibe capacitación continua y está asegurado. Puntualidad y respeto garantizados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALES
+============================================================ -->
+<section id="confianza">
+  <div class="container">
+    <div class="trust-header reveal">
+      <span class="section-label">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Excelente servicio. El equipo llegó puntual, trabajó con mucho cuidado y dejaron nuestras oficinas perfectas. Definitivamente los contrataremos de forma mensual.</blockquote>
+        <div class="reviewer"><div class="reviewer-avatar">LM</div><div><div class="reviewer-name">Laura Martínez</div><div class="reviewer-role">Gerente Administrativa</div></div></div>
+      </div>
+      <div class="trust-card reveal" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <blockquote>Contratamos para la limpieza post-evento de nuestra boda y quedamos fascinados. En 3 horas dejaron el salón impecable. Muy recomendados.</blockquote>
+        <div class="reviewer"><div class="reviewer-avatar">CR</div><div><div class="reviewer-name">Carlos Rodríguez</div><div class="reviewer-role">Cliente particular</div></div></div>
+      </div>
+      <div class="trust-card reveal" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <blockquote>Llevamos 2 años con ellos para el aseo semanal de nuestro apartamento. Siempre confiables, atentos y con los mejores productos. Son parte de la familia.</blockquote>
+        <div class="reviewer"><div class="reviewer-avatar">AP</div><div><div class="reviewer-name">Andrea Pérez</div><div class="reviewer-role">Residente — Ed. Centro</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACTOS
+============================================================ -->
+<section id="contactos">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <span class="section-label reveal">Estamos aquí para ti</span>
+        <h2 class="section-title reveal">Contáctanos</h2>
+        <p class="reveal">Escríbenos, llámanos o visítanos. Estaremos encantados de atenderte y resolver todas tus dudas.</p>
+        <ul class="contact-list">
+          <li class="contact-item reveal">
+            <span class="contact-item-icon"><i class="ph ph-phone"></i></span>
+            <div><strong>Teléfono</strong><a href="tel:3136846940"> 313 684 6940</a></div>
+          </li>
+          <li class="contact-item reveal" style="transition-delay:.1s">
+            <span class="contact-item-icon"><i class="ph ph-whatsapp-logo"></i></span>
+            <div><strong>WhatsApp</strong><a href="https://wa.me/3136846940" target="_blank" rel="noopener"> 313 684 6940</a></div>
+          </li>
+          <li class="contact-item reveal" style="transition-delay:.2s">
+            <span class="contact-item-icon"><i class="ph ph-envelope"></i></span>
+            <div><strong>Correo electrónico</strong><a href="mailto:info@cleanpro.com.co">info@cleanpro.com.co</a></div>
+          </li>
+          <li class="contact-item reveal" style="transition-delay:.3s">
+            <span class="contact-item-icon"><i class="ph ph-map-pin"></i></span>
+            <div><strong>Dirección</strong>Cartagena, Bolívar, Colombia</div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-map reveal" style="transition-delay:.2s">
+        <i class="ph ph-map-trifold"></i>
+        <p style="font-weight:600;color:var(--gray-700);font-size:1rem">Cartagena, Bolivar</p>
+        <p>Colombia</p>
+        <a href="https://wa.me/573136846940" target="_blank" rel="noopener"
+           class="btn btn-primary" style="margin-top:1.5rem;font-size:.875rem">
+          <i class="ph ph-whatsapp-logo"></i> Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-icon"><img src="../imagenes/logo.png" alt="Logo JESMILUZ" /></span>
+          <span class="brand-text">
+            <span class="brand-top">SERVICIOS INTEGRALES</span>
+            <span class="brand-bottom">JESMILUZ</span>
+          </span>
+        </a>
+        <p>Servicios profesionales de aseo y limpieza para hogares, oficinas y empresas en Cartagena y el Área Metropolitana.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Aseo de Oficinas</a></li>
+          <li><a href="#servicios">Aseo de Apartamentos</a></li>
+          <li><a href="#servicios">Aseo Empresarial</a></li>
+          <li><a href="#servicios">Aseo para Eventos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#informacion">Misión</a></li>
+          <li><a href="#informacion">Experiencia</a></li>
+          <li><a href="#confianza">Testimonios</a></li>
+          <li><a href="#contactos">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 CleanPro. Todos los derechos reservados.</span>
+      <span>Hecho con <i class="ph ph-heart" style="color:#a8d5b8"></i> en Cartagena</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/573136846940" target="_blank" rel="noopener"
+   class="fab-whatsapp" aria-label="Contactar por WhatsApp">
+  <i class="ph ph-whatsapp-logo"></i>
+</a>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ----------------------------------------------------------
+     1. NAVBAR – efecto scroll y link activo
+  ---------------------------------------------------------- */
+  const navbar   = document.getElementById('navbar');
+  const navAnchors = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  const allSections = document.querySelectorAll('section[id]');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    let current = '';
+    allSections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 130) current = s.id;
+    });
+    navAnchors.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+
+  /* ----------------------------------------------------------
+     2. MENÚ MÓVIL
+  ---------------------------------------------------------- */
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ----------------------------------------------------------
+     3. CARRUSEL
+  ---------------------------------------------------------- */
+  const slides    = document.querySelectorAll('.carousel-slide');
+  const dotsWrap  = document.getElementById('carouselDots');
+  const prevBtn   = document.getElementById('prevBtn');
+  const nextBtn   = document.getElementById('nextBtn');
+  let current     = 0;
+  let autoTimer;
+
+  // Crear dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Imagen ' + (i + 1));
+    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+    dotsWrap.appendChild(dot);
+  });
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+  }
+
+  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 3000); }
+  function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+  // Swipe en móvil
+  let touchX = 0;
+  document.getElementById('carousel').addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('carousel').addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetAuto(); }
+  });
+
+  startAuto();
+
+  /* ----------------------------------------------------------
+     4. SCROLL REVEAL (IntersectionObserver)
+  ---------------------------------------------------------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => io.observe(el));
+
+  /* ----------------------------------------------------------
+     5. FORMULARIO → WhatsApp
+  ---------------------------------------------------------- */
+  const form = document.getElementById('quoteForm');
+
+  // Fecha mínima = hoy
+  const hoy = new Date();
+  const yy  = hoy.getFullYear();
+  const mm  = String(hoy.getMonth() + 1).padStart(2, '0');
+  const dd  = String(hoy.getDate()).padStart(2, '0');
+  document.getElementById('fecha').min = `${yy}-${mm}-${dd}`;
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const nombre      = form.nombre.value.trim();
+    const telefono    = form.telefono.value.trim();
+    const servicio    = form.servicio.value;
+    const fecha       = form.fecha.value;
+    const descripcion = form.descripcion.value.trim();
+
+    // Validación visual
+    let valid = true;
+    [form.nombre, form.telefono, form.servicio, form.fecha].forEach(field => {
+      const empty = !field.value.trim() || (field.tagName === 'SELECT' && !field.value);
+      if (empty) {
+        field.style.borderColor = '#e05252';
+        setTimeout(() => { field.style.borderColor = ''; }, 2500);
+        valid = false;
+      }
+    });
+    if (!valid) return;
+
+    // Formatear fecha
+    const fechaFmt = fecha
+      ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })
+      : 'Por definir';
+
+    // Construir mensaje
+    const lineas = [
+      '👋 *¡Hola CleanPro!* Me interesa una cotización:',
+      '',
+      '👤 *Nombre:* ' + nombre,
+      '📱 *Teléfono:* ' + telefono,
+      '🧹 *Servicio:* ' + servicio,
+      '📅 *Fecha deseada:* ' + fechaFmt,
+    ];
+    if (descripcion) lineas.push('📝 *Detalles:* ' + descripcion);
+    lineas.push('', 'Quedo atento/a a su respuesta. ¡Gracias! 😊');
+
+    const waURL = 'https://wa.me/573136846940?text=' + encodeURIComponent(lineas.join('\n'));
+    window.open(waURL, '_blank', 'noopener,noreferrer');
+  });
+</script>
+</body>
+</html>
