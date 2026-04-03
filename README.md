@@ -1,46 +1,39 @@
-# JESMILUZ CleanPro - Sitio web de servicios de limpieza
+# 🧹 JESMILUZ - Servicios Profesionales de Aseo y Limpieza
 
-Este repositorio contiene una landing page responsive para una empresa de limpieza (JESMILUZ / CleanPro), desarrollada con HTML, CSS y JavaScript puro.
+Sitio web oficial de **JESMILUZ**, empresa de servicios integrales de limpieza para hogares, oficinas y empresas en Cartagena, Colombia.
 
-## Estructura
+![Vista previa](imagenes/logo.png)
 
-- `limpiezaclode (1).html` - página principal con diseño completo.
-- `imagenes/` - contiene los logos e imágenes usadas por el sitio (`logo.png`, `logo1.png`).
+## 🌐 Demo en vivo
 
-## Funcionalidades
+👉 **[Ver sitio web](https://TU_USUARIO.github.io/jesmiluz/)**
 
-- Menú fijo con efecto scroll y enlace activo.
-- Menú móvil (hamburguesa) con apertura/cierre.
-- Carrusel de imágenes con navegación manual, autoavance y swipe táctil.
-- Scroll reveal con `IntersectionObserver`.
-- Formulario de cotización que genera un mensaje para WhatsApp.
-- Secciones: Hero, Servicios, Cotización, Información, Testimonios, Contacto y Footer.
-- Botón flotante de WhatsApp.
+## ✨ Características
 
-## Cómo ejecutar
+- 🏢 **Aseo de Oficinas** - Espacios corporativos impecables
+- 🏠 **Aseo de Apartamentos** - Limpieza residencial profunda
+- 🏭 **Aseo Empresarial** - Grandes instalaciones e industrias
+- 🎉 **Aseo para Eventos** - Pre y post evento
+- ❄️ **Mantenimiento de Aires Acondicionados**
+- 🌿 **Jardinería** - Cuidado de áreas verdes
 
-1. Clonar el repositorio:
+## 🛠️ Tecnologías
 
-```bash
-git clone <url-del-repositorio>
-cd "limpiesa web"
-```
+- HTML5 semántico
+- CSS3 moderno (variables CSS, Grid, Flexbox)
+- JavaScript vanilla
+- Diseño responsive (móvil, tablet, desktop)
+- [Phosphor Icons](https://phosphoricons.com/)
+- [Google Fonts](https://fonts.google.com/) (Playfair Display + DM Sans)
 
-2. Abrir `limpiezaclode (1).html` en el navegador.
+## 📱 Funcionalidades
 
-## Consideraciones
+- ✅ Carrusel de imágenes en hero
+- ✅ Formulario de cotización con envío a WhatsApp
+- ✅ Navegación fija con efecto blur
+- ✅ Animaciones de scroll (reveal)
+- ✅ Menú responsive para móviles
+- ✅ Botón flotante de WhatsApp
 
-- El proyecto es estático, no requiere servidor.
-- Asegúrate de que la ruta de la imagen del logo (`imagenes/logo.png`) sea correcta.
-- En móviles, el menu principal se oculta y se utiliza el menú hamburguesa.
+## 📂 Estructura del proyecto
 
-## Mejores prácticas sugeridas
-
-- Agregar minificación de CSS y JS para producción.
-- Incluir metadatos SEO (`meta description`, `og:*`).
-- Subir las imágenes optimizadas (JPEG/PNG/WebP) y con atributos `width/height` donde sea necesario.
-- Reemplazar los enlaces de contacto con valores reales cuando se publique.
-
-## Autor
-
-- JESMILUZ - Servicios Integrales de Aseo y Limpieza
