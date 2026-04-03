@@ -1,39 +1,35 @@
-# 🧹 JESMILUZ - Servicios Profesionales de Aseo y Limpieza
+# 🧹 JESMILUZ CleanPro - Sitio web de servicios de limpieza
 
-Sitio web oficial de **JESMILUZ**, empresa de servicios integrales de limpieza para hogares, oficinas y empresas en Cartagena, Colombia.
-
-![Vista previa](imagenes/logo.png)
+Landing page responsive para una empresa de limpieza (JESMILUZ / CleanPro), desarrollada con HTML, CSS y JavaScript puro.
 
 ## 🌐 Demo en vivo
 
-👉 **[Ver sitio web](https://TU_USUARIO.github.io/jesmiluz/)**
+👉 **[Ver sitio web](https://TU_USUARIO.github.io/limpiesaweb/)**
 
-## ✨ Características
+*(Reemplaza TU_USUARIO con tu nombre de usuario de GitHub)*
 
-- 🏢 **Aseo de Oficinas** - Espacios corporativos impecables
-- 🏠 **Aseo de Apartamentos** - Limpieza residencial profunda
-- 🏭 **Aseo Empresarial** - Grandes instalaciones e industrias
-- 🎉 **Aseo para Eventos** - Pre y post evento
-- ❄️ **Mantenimiento de Aires Acondicionados**
-- 🌿 **Jardinería** - Cuidado de áreas verdes
+## 📂 Estructura
 
-## 🛠️ Tecnologías
+- `index.html` - Página principal con diseño completo.
+- `imagenes/` - Contiene los logos e imágenes usadas por el sitio (`logo.png`, `logo1.png`).
 
-- HTML5 semántico
-- CSS3 moderno (variables CSS, Grid, Flexbox)
-- JavaScript vanilla
-- Diseño responsive (móvil, tablet, desktop)
-- [Phosphor Icons](https://phosphoricons.com/)
-- [Google Fonts](https://fonts.google.com/) (Playfair Display + DM Sans)
+## ✨ Funcionalidades
 
-## 📱 Funcionalidades
+- Menú fijo con efecto scroll y enlace activo.
+- Menú móvil (hamburguesa) con apertura/cierre.
+- Carrusel de imágenes con navegación manual, autoavance y swipe táctil.
+- Scroll reveal con `IntersectionObserver`.
+- Formulario de cotización que genera un mensaje para WhatsApp.
+- Secciones: Hero, Servicios, Cotización, Información, Testimonios, Contacto y Footer.
+- Botón flotante de WhatsApp.
 
-- ✅ Carrusel de imágenes en hero
-- ✅ Formulario de cotización con envío a WhatsApp
-- ✅ Navegación fija con efecto blur
-- ✅ Animaciones de scroll (reveal)
-- ✅ Menú responsive para móviles
-- ✅ Botón flotante de WhatsApp
+## 🚀 Cómo ejecutar
 
-## 📂 Estructura del proyecto
+### Opción 1: Online
+Visita: `https://TU_USUARIO.github.io/limpiesaweb/`
 
+### Opción 2: Local
+```bash
+git clone https://github.com/TU_USUARIO/limpiesaweb.git
+cd limpiesaweb
+# Abre index.html en tu navegador
